@@ -13,9 +13,6 @@ import java.util.List;
 @Controller
 public class HelloController {
 
-
-
-
     // value - шаблон запроса, это значит что данный контролер примет запрос, который соответсвует /, тоесть абсолютно любой
     @GetMapping(value = "/")
     public String printWelcome(ModelMap model) {

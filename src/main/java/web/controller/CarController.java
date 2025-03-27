@@ -15,26 +15,17 @@ import java.util.List;
 @Controller
 public class CarController {
 
-    CarService carService;
+    private final CarService carService;
 
     @Autowired
-    public CarController(@Qualifier("carServiceImp") CarService carService) {
+    public CarController(CarService carService) {
         this.carService = carService;
     }
 
     @GetMapping("/cars")
-    public String printListCars(@RequestParam("count") int count, ModelMap model ) {
+    public String printListCars(@RequestParam("count") int count, ModelMap model) {
 
-        List<Car> listCars = new ArrayList<>() {{
-            add(new Car("Tesla Model-X, 2017", "100000 km", 30000));
-            add(new Car("Kia Optima, 2020", "170400 km", 25000));
-            add(new Car("Toyota Supra, 2004", "320800 km", 32000));
-            add(new Car("lamborghini Aventador, 2018", "7460 km", 400000));
-            add(new Car("Kia Sportage 3, 2015", "148700 km", 20000));
-
-        }};
-
-        model.addAttribute("listCars",carService.getListCarsFromCount(listCars, count));
+        model.addAttribute("listCars", carService.getListCarsFromCount(count));
 
         return "car"; // имя представления
     }

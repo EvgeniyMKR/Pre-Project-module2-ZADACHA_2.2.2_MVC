@@ -10,19 +10,22 @@ import java.util.List;
 
 @Component
 public class CarServiceImp implements CarService {
-    @Override
-    public List<Car> getListCarsFromCount(List<Car> cars, int count) {
 
-        if (count >= cars.size()) {
-            return cars;
-        } else if (count > 0) {
-            List<Car> resultList = new ArrayList<>();
-            for (int i = 0; i < count; i++) {
-                resultList.add(cars.get(i));
-            }
-            return resultList;
-        }
-        return Collections.EMPTY_LIST;
+    private final List<Car> cars;
+
+    public CarServiceImp() {
+        this.cars = new ArrayList<>() {{
+            add(new Car("Tesla Model-X, 2017", "100000 km", 30000));
+            add(new Car("Kia Optima, 2020", "170400 km", 25000));
+            add(new Car("Toyota Supra, 2004", "320800 km", 32000));
+            add(new Car("lamborghini Aventador, 2018", "7460 km", 400000));
+            add(new Car("Kia Sportage 3, 2015", "148700 km", 20000));
+        }};
+    }
+
+    @Override
+    public List<Car> getListCarsFromCount(int count) {
+        return this.cars.subList(0, count >= this.cars.size() ? this.cars.size() : Math.abs(count));
     }
 
 }
