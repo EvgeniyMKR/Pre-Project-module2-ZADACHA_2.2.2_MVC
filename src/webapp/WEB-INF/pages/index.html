@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title></title>
 </head>
 <body>
+<img src="https://i.pinimg.com/736x/47/17/0a/47170ad4d8aaa814852aea62d3cdec88.jpg" alt="картинка">
 <div>
     <th:block th:each="msg : ${messages}">
         <h1 th:text="${msg}"></h1>
     </th:block>
 </div>
+<a th:href="@{/cars(count=${0})}">Посмотреть автомобили в наличии</a>
+
 </body>
 </html>

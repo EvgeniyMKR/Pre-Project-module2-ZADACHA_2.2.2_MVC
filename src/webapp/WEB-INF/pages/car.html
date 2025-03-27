@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>АВТОМОБИЛИ</title>
+</head>
+<body>
+<a href="/">назад на главную</a>
+<form action="/cars" method="get">
+    <label for="count">Введите количество автомобилей для просмотра:</label>
+    <input type="number" id="count" name="count" min="0" required>
+    <button type="submit">Показать автомобили</button>
+</form>
+
+<div>
+    <h1>Список автомобилей:</h1>
+    <img src="https://t4.ftcdn.net/jpg/00/68/08/85/360_F_68088587_dI64IVAqz85TxF0e8xodhZYIrxRXYZb2.jpg" alt="картинка">
+    <th:block th:each="car, position: ${listCars}">
+        <h2 th:text="${position.index+1} + ') '+ ${car.model}"></h2>
+        <p th:text="'Пробег: ' + ${car.mileage}"></p>
+        <p th:text="'Цена: ' + ${car.price} +'$'"></p>
+        <hr/>
+    </th:block>
+</div>
+</body>
+</html>
+
